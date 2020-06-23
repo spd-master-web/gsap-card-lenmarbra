@@ -52,6 +52,35 @@
     </ul>
   </nav>
 
-  <script src="js/TweenMax.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.3.1/gsap.min.js"></script> 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.3.1/CSSRulePlugin.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.3.3/ScrollTrigger.min.js"></script>
+  
+  <script>
+
+  function cardContent (selector){
+    console.log("hello");
+    var tl = gsap.timeline();
+    tl.from(".card__image", {rotation: -380, delay: 1, duration: 1.5, ease: "back"});
+    // tl.from(".card__image_earth", {rotation: -380, delay: 1, duration: 1.5, ease: "back"});
+    tl.to(".card__image--bg", {duration: 1, scale: 1.1});
+    tl.to(".card__image--bg", {duration: 1, scale: 1})
+    tl.from(".card__title, .card__description", {opacity: 0, duration: 1});
+    tl.from(".card__link", {opacity: 0, duration: 1}) -1;
+  };
+
+    var animationDuration = 5;
+    var cardSwap = gsap.timeline({repeat: -1});
+    cardSwap.from("#dolphin", {alpha: 0, delay: 0, onComplete: cardContent, onCompleteParams: ["#dolphin"]});
+    cardSwap.to("#dolphin", {alpha: 0, duration: animationDuration, delay: 6});
+    cardSwap.from("#island", {alpha: 0, delay: 0, onComplete: cardContent, onCompleteParams: ["#island"]});
+    cardSwap.to("#island", {alpha: 0, duration: animationDuration, delay: 6});
+    cardSwap.from("#earth", {alpha: 0, delay: 0, onComplete: cardContent, onCompleteParams: ["#earth"]});
+    cardSwap.to("#earth", {alpha: 0, duration: animationDuration, delay: 6});
+  </script>
+
 </body>
 </html>
+
+
+
