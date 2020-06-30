@@ -46,9 +46,9 @@
 
   <nav class="navigation">
     <ul class="navigation__list">
-      <li class="navigation__listitem"><a href="#dolphin" class="navigation__link">Dolphins and plastic</a></li>
-      <li class="navigation__listitem"><a href="#island" class="navigation__link">Palm oil effects</a></li>
-      <li class="navigation__listitem"><a href="#earth" class="navigation__link">Climate crisis</a></li>
+      <li class="navigation__listitem" id="dolphinlink"><a href="#dolphin" class="navigation__link">Dolphins and plastic</a></li>
+      <li class="navigation__listitem" id="islandlink"><a href="#island" class="navigation__link">Palm oil effects</a></li>
+      <li class="navigation__listitem" id="earthlink"><a href="#earth" class="navigation__link">Climate crisis</a></li>
     </ul>
   </nav>
 
@@ -58,29 +58,44 @@
   
   <script>
 
-  function cardContent (selector){
-    console.log("hello");
-    var tl = gsap.timeline();
-    tl.from(".card__image", {rotation: -380, delay: 1, duration: 1.5, ease: "back"});
-    // tl.from(".card__image_earth", {rotation: -380, delay: 1, duration: 1.5, ease: "back"});
-    tl.to(".card__image--bg", {duration: 1, scale: 1.1});
-    tl.to(".card__image--bg", {duration: 1, scale: 1})
-    tl.from(".card__title, .card__description", {opacity: 0, duration: 1});
-    tl.from(".card__link", {opacity: 0, duration: 1}) -1;
+    var dolphinLink = document.getElementById("dolphinlink");
+    var dolphinCard = document.getElementById("dolphin");
+    var islandLink = document.getElementById("islandlink");
+    var islandCard = document.getElementById("island");
+    var earthLink = document.getElementById("earthlink");
+    var earthCard = document.getElementById("earth");
+
+    // add an event to the links
+    dolphinLink.addEventListener("click", openDolphin, cardContent);
+      function openDolphin(){
+        console.log("you clicked");
+        dolphin.classList.toggle("dolphin");
+      }
+    islandLink.addEventListener("click", openIsland, cardContent);
+      function openIsland(){
+        console.log("you clicked");
+        island.classList.toggle("island");
+      }
+    earthLink.addEventListener("click", openEarth, cardContent);
+      function openEarth(){
+        console.log("you clicked");
+        earth.classList.toggle("earth");
+      }
+      function cardContent (selector){
+        console.log("playlist is bing played");
+        var tl = gsap.timeline();
+        tl.from(".card__image", {rotation: -380, delay: 1, duration: 1.5, ease: "back"});
+        // tl.from(".card__image_earth", {rotation: -380, delay: 1, duration: 1.5, ease: "back"});
+        tl.to(".card__image--bg", {duration: 1, scale: 1.1});
+        tl.to(".card__image--bg", {duration: 1, scale: 1})
+        tl.from(".card__title, .card__description", {opacity: 0, duration: 1});
+        tl.from(".card__link", {opacity: 0, duration: 1}) -1;
   };
 
-    var animationDuration = 5;
-    var cardSwap = gsap.timeline({repeat: -1});
-    cardSwap.from("#dolphin", {alpha: 0, delay: 0, onComplete: cardContent, onCompleteParams: ["#dolphin"]});
-    cardSwap.to("#dolphin", {alpha: 0, duration: animationDuration, delay: 6});
-    cardSwap.from("#island", {alpha: 0, delay: 0, onComplete: cardContent, onCompleteParams: ["#island"]});
-    cardSwap.to("#island", {alpha: 0, duration: animationDuration, delay: 6});
-    cardSwap.from("#earth", {alpha: 0, delay: 0, onComplete: cardContent, onCompleteParams: ["#earth"]});
-    cardSwap.to("#earth", {alpha: 0, duration: animationDuration, delay: 6});
+
   </script>
 
 </body>
 </html>
-
 
 
