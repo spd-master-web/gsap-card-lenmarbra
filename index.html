@@ -66,20 +66,11 @@
     var earthCard = document.getElementById("earth");
 
     // add an event to the links
-    dolphinLink.addEventListener("click", openDolphin, cardContent);
+    dolphinLink.addEventListener("click", openDolphin);
+    dolphinLink.addEventListener("click", cardContent);
       function openDolphin(){
         console.log("you clicked");
-        dolphin.classList.toggle("dolphin");
-      }
-    islandLink.addEventListener("click", openIsland, cardContent);
-      function openIsland(){
-        console.log("you clicked");
-        island.classList.toggle("island");
-      }
-    earthLink.addEventListener("click", openEarth, cardContent);
-      function openEarth(){
-        console.log("you clicked");
-        earth.classList.toggle("earth");
+        dolphin.classList.click("dolphin");
       }
       function cardContent (selector){
         console.log("playlist is bing played");
@@ -90,7 +81,41 @@
         tl.to(".card__image--bg", {duration: 1, scale: 1})
         tl.from(".card__title, .card__description", {opacity: 0, duration: 1});
         tl.from(".card__link", {opacity: 0, duration: 1}) -1;
-  };
+        }
+
+    islandLink.addEventListener("click", openIsland, cardContent);
+    islandLink.addEventListener("click", cardContent);
+      function openIsland(){
+        console.log("you clicked");
+        island.classList.click("island");
+      }
+      function cardContent (selector){
+        console.log("playlist is bing played");
+        var tl = gsap.timeline();
+        tl.from(".card__image", {rotation: -380, delay: 1, duration: 1.5, ease: "back"});
+        // tl.from(".card__image_earth", {rotation: -380, delay: 1, duration: 1.5, ease: "back"});
+        tl.to(".card__image--bg", {duration: 1, scale: 1.1});
+        tl.to(".card__image--bg", {duration: 1, scale: 1})
+        tl.from(".card__title, .card__description", {opacity: 0, duration: 1});
+        tl.from(".card__link", {opacity: 0, duration: 1}) -1;
+        }
+
+    earthLink.addEventListener("click", openEarth, cardContent);
+    earthLink.addEventListener("click", cardContent);
+      function openEarth(){
+        console.log("you clicked");
+        earth.classList.click("earth");
+      }
+      function cardContent (selector){
+        console.log("playlist is bing played");
+        var tl = gsap.timeline();
+        tl.from(".card__image", {rotation: -380, delay: 1, duration: 1.5, ease: "back"});
+        // tl.from(".card__image_earth", {rotation: -380, delay: 1, duration: 1.5, ease: "back"});
+        tl.to(".card__image--bg", {duration: 1, scale: 1.1});
+        tl.to(".card__image--bg", {duration: 1, scale: 1})
+        tl.from(".card__title, .card__description", {opacity: 0, duration: 1});
+        tl.from(".card__link", {opacity: 0, duration: 1}) -1;
+      };
 
 
   </script>
